@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; <a href="home.html">Job Landing</a>, All Right Reserved.</p>
+      <p>&copy; <a href="home.php">Job Landing</a>, All Right Reserved.</p>
       <div class="footer-menu">
         <a href="#">Home</a>
         <a href="#">Cookies</a>

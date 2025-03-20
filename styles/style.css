@@ -1805,7 +1805,6 @@ description: [html files it refers to (if known)]
   #apply-background {
     background-image: url(./images/form-background.jpg);
     display: inline;
-    font-family: 'Lilita One', sans-serif;
   }
 
   .form-all, fieldset{

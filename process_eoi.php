@@ -1,5 +1,5 @@
 <?php
-require_once("settings.php"); // Connection info
+require("settings.php"); // Connection info
 
 // Prevent direct access
 if (!isset($_POST["submit"])) {
@@ -8,32 +8,10 @@ if (!isset($_POST["submit"])) {
     exit();
 }
 
-$conn = mysqli_connect($host, $user, $pwd, $sql_db);
 if (!$conn) {
     echo "<p>Database connection failure</p>";
     exit();
-} 
-
-// Create EOI table if it doesn't exist
-$createTableSQL = "CREATE TABLE IF NOT EXISTS Process_EOI (
-    EOInumber INT AUTO_INCREMENT PRIMARY KEY,
-    job_reference_number VARCHAR(5) NOT NULL,
-    first_name VARCHAR(20) NOT NULL,
-    last_name VARCHAR(20) NOT NULL,
-    street_address VARCHAR(40) NOT NULL,
-    suburb_town VARCHAR(40) NOT NULL,
-    state ENUM('VIC', 'NSW', 'QLD', 'NT', 'WA', 'SA', 'TAS', 'ACT') NOT NULL,
-    postcode CHAR(4) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    phone VARCHAR(12) NOT NULL,
-    skill_html VARCHAR(100),
-    skill_css VARCHAR(100),
-    skill_js VARCHAR(100),
-    skill_php VARCHAR(100),
-    skill_sql VARCHAR(100),
-    other_skills TEXT,
-    status ENUM('New', 'Current', 'Final') DEFAULT 'New'
-)";
+}
 
 $result = mysqli_query($conn, $create_eoi_table);
 if (!$result) {

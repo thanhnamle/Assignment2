@@ -19,7 +19,7 @@
 
         <!-- Form section -->
         <div id="form-align">
-            <form class="form-form" action="process_eoi.php" method="post">
+            <form class="form-form" action="process_eoi.php" method="post" novalidate="novalidate">
                 <fieldset class="form-all">
                     <div class="form-font" id="header">
                         <h1>Job Application Form</h1>
