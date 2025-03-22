@@ -13,7 +13,9 @@
 </head>
 <body class ="body_about">
     <!-- Header section -->
-    <?php require_once("header.inc"); ?>
+    <?php 
+        include 'include\header.inc'; 
+    ?>
 
     <!-- Group information -->
     <div class = "about_introduction3">
@@ -99,19 +101,19 @@
                 <table>
                     <thead>
                         <tr class = "about_tr">
-                            <th>Day/Time</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thusday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
-                            <th>Sunday</th>
+                            <th class="about_th">Day/Time</th>
+                            <th class="about_th">Monday</th>
+                            <th class="about_th">Tuesday</th>
+                            <th class="about_th">Wednesday</th>
+                            <th class="about_th">Thusday</th>
+                            <th class="about_th">Friday</th>
+                            <th class="about_th">Saturday</th>
+                            <th class="about_th">Sunday</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class = "about_tr">
-                            <td style="background-color: yellowgreen;" >Morning</td>
+                            <td class="about_td" style="background-color: yellowgreen;" >Morning</td>
                             <td class ="about_td">TNE10006<br>7AM-11AM</td>
                             <td class ="about_td">&nbsp;</td>
                             <td class ="about_td">&nbsp;</td>
@@ -121,7 +123,7 @@
                             <td class ="about_td">&nbsp;</td>
                         </tr>
                         <tr class = "about_tr">
-                            <td style="background-color: yellowgreen">Afternoon</td>
+                            <td class="about_td" style="background-color: yellowgreen">Afternoon</td>
                             <td class ="about_td">&nbsp;</td>
                             <td class ="about_td">&nbsp;</td>
                             <td class ="about_td">COS10026<br>1PM-5PM</td>
@@ -131,7 +133,7 @@
                             <td class ="about_td">&nbsp;</td>
                         </tr>
                         <tr class = "about_tr">
-                            <td style="background-color: yellowgreen">Evening</td>
+                            <td class="about_td" style="background-color: yellowgreen">Evening</td>
                             <td class ="about_td">&nbsp;</td>
                             <td class ="about_td">&nbsp;</td>
                             <td class ="about_td">&nbsp;</td>
@@ -149,6 +151,8 @@
     </div>
 
     <!-- Footer section -->
-    <?php require_once("footer.inc"); ?>
+    <?php 
+        include 'include\footer.inc'; 
+    ?>
 </body>
 </html>

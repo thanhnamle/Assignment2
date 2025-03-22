@@ -13,7 +13,9 @@
 </head>
 <body class="enhancements-body">
     <!-- Header section -->
-    <?php require_once("header.inc"); ?>
+    <?php 
+        include 'include\header.inc'; 
+    ?>
 
     <!-- Enhancements section -->
     <header class="enhancements-header">
@@ -66,6 +68,8 @@
     
     </main>
     <!-- Footer section -->
-    <?php require_once("footer.inc"); ?>
+    <?php 
+            include 'include\footer.inc'; 
+    ?>
 </body>
 </html>

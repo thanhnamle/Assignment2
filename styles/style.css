@@ -1341,7 +1341,7 @@ transform: scale(1.05) !important; /* Slightly scale up the header */
   margin-bottom: 40px;
   
 }
-th, td {
+.about_th, .about_td {
   
   padding: 10px;
   text-align: center;
@@ -1349,14 +1349,14 @@ th, td {
   /* border-radius: 10px; */
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
-th {
+.about_th {
   background-color: yellowgreen;
 }
 .about_td {
   background-color: #ffffff;
   border: 2px dashed darkcyan
 }
-th:hover, td:hover {
+.about_th:hover, .about_td:hover {
   background-color: orange !important; /* Change background color on hover */
   cursor: pointer;          /* Change cursor to pointer on hover */
 }
@@ -1411,7 +1411,7 @@ table {
   min-width: 600px; /* Set minimum width so that it doesn't collapse */
 }
 
-th, td {
+.about_th, .about_td {
   font-size: 14px; /* Adjust font size for readability */
   padding: 8px;
 }
@@ -1807,7 +1807,7 @@ description: [html files it refers to (if known)]
     display: inline;
   }
 
-  .form-all, fieldset{
+  .form-all, .apply_fieldset{
     background: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     /* border-left: 5px solid blue; */
@@ -1863,7 +1863,7 @@ description: [html files it refers to (if known)]
   }
 
   /* Inputs, Textareas, and Selects */
-  input, select {
+  .apply_input, .apply_select {
     width: 95%;
     padding: 10px;
     margin-top: 5px;
@@ -1874,7 +1874,7 @@ description: [html files it refers to (if known)]
     transition: all 0.3s ease;
   }
 
-  input:focus, select:focus, textarea:focus {
+  .apply_input:focus, .apply_select:focus, .apply_textarea:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
@@ -1939,7 +1939,7 @@ description: [html files it refers to (if known)]
     transition: color 0.3s ease-in-out;
   }
 
-  .checkbox_name input {
+  .checkbox_name .apply_input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -1962,7 +1962,7 @@ description: [html files it refers to (if known)]
     transform: scale(1.1);
   }
 
-  .checkbox_name input:checked + span {
+  .checkbox_name .apply_input:checked + span {
     background-color: #6a1b9a;
     border-color: #6a1b9a;
     box-shadow: 0 0 10px rgba(106, 27, 154, 0.6);
@@ -1970,7 +1970,7 @@ description: [html files it refers to (if known)]
     transition: all 0.3s ease-in-out;
   }
 
-  .checkbox_name input:checked + span::after {
+  .checkbox_name .apply_input:checked + span::after {
     content: '';
     position: absolute;
     left: 6px;
@@ -1984,7 +1984,7 @@ description: [html files it refers to (if known)]
   }
 
   /* Glowing effect when checked */
-  .checkbox_name input:checked + span::after {
+  .checkbox_name .apply_input:checked + span::after {
     animation: tick-glow 0.3s ease-in-out;
   }
 
@@ -2024,14 +2024,14 @@ description: [html files it refers to (if known)]
     transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
 }
 
-  input[type="checkbox"]:checked ~ #form-textarea {
+  .apply_input[type="checkbox"]:checked ~ #form-textarea {
     max-height: 500px;
     opacity: 1;
     transform: translateY(0);
     transition: all 0.5s ease-in-out;
   }
 
-  .button, input[type="submit"], input[type="reset"] {
+  .apply_button, #apply_submit[type="submit"], input[type="reset"] {
     width: 100%;
     color: white;
     font-size: 16px;
@@ -2044,12 +2044,12 @@ description: [html files it refers to (if known)]
     transition: all 0.3s ease;
   }
 
-  input[type="submit"] {
+  #apply_submit[type="submit"] {
     color: white;
     background: linear-gradient(135deg, #007bff, #0056b3);
   }
 
-  input[type="submit"]:hover {
+  #apply_submit[type="submit"]:hover {
     background: linear-gradient(135deg, #0056b3, #003f7f);
   }
 
@@ -2086,6 +2086,452 @@ description: [html files it refers to (if known)]
         font-size: 20px;
     }
   }
+
+/* ========================================================================================================================================= */
+/* Login Styling */
+  /* Reset và cài đặt chung */
+/* Phần body chung */
+.login_body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Phần video nền và tiêu đề */
+.intro_login_content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.intro_login_video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Overlay gradient trên video */
+.intro_login_content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 198, 255, 0.7) 0%, rgba(136, 100, 170, 0.7) 50%, rgba(255, 0, 132, 0.7) 100%);
+}
+
+#intro_login_heading {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  color: white;
+  z-index: 10;
+  font-size: 28px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#manage_form_body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#manage_form_login {
+  max-width: 400px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.692);
+  flex-grow: 1;
+  padding: 30px 30px 40px;
+}
+
+.manage_form_error {
+  color: #f5f5f5;
+  padding: 10px 10px 20px 10px;
+}
+
+.manage_heading {
+  color: #f5f5f5;
+}
+.manage_heading {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 30px;
+  text-decoration: 2px underline #f5f5f5;
+}
+
+.manage_form_group {
+  border-bottom: 1px solid #f5f5f5;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  padding: 10px 0;
+}
+
+.manage_form_input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: whitesmoke ;
+  flex-grow: 1;
+  padding-left: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#icon_manager{
+  color: white;
+}
+
+.manage_login_button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+}
+
+.manage_login_button:hover {
+  
+  transform: scale(1.05)
+}
+
+.manage_paragraph1 {
+  color: #f5f5f5;
+}
+
+.manage_form_group_user {
+  display: flex;  
+}
+  
+.manage_paragraph1 {
+  min-width: 120px;
+  padding-left: 10px;
+}
+
+.manage_paragraph2 {
+  color: #f5f5f5;
+}
+
+.display_account {
+  border-left: 2px solid seagreen;
+  border-bottom: 2px solid seagreen ;
+}
+
+.login_back_button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.login_back_button:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#manage_form_login {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: slideFadeIn 1s ease forwards;
+}
+
+#manage_form_login:hover {
+  transform: translateY(40px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.intro_login_content::after {
+  animation: fadeInBG 1.5s ease forwards;
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInBG {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#intro_login_heading {
+  animation: fadeDown 1s ease-in-out forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+@keyframes fadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #manage_form_login {
+      width: 90%;
+      padding: 25px;
+  }
+
+  .manage_heading {
+      font-size: 22px;
+  }
+
+  .manage_form_login,
+  .login_back_button {
+      padding: 10px;
+      font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .manage_heading {
+      font-size: 20px;
+  }
+
+  .manage_form_input {
+      font-size: 14px;
+  }
+
+  .manage_form_login,
+  .login_back_button {
+      padding: 10px;
+  }
+}
+
+
+/* ========================================================================================================================================= */
+/* Manage Styling */
+.manage_container {
+  font-family: "Oswald" , sans-serif ;
+  background-color: #f4faff;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.manage_dong1 {
+  background-color: rgb(9, 120, 189);
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-around;
+  border-radius: 10px;
+  border: 0;
+}
+
+.manage_heading_content{
+  color: white;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.manage_heading_logout {
+  color: white;
+  font-size: 25px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.manage_dong2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 15px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.manage_dong2 input, 
+.manage_dong2 select, 
+.manage_dong2 button {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.manage_dong2 button {
+  background-color: #0978bd;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.manage_dong2 button:hover {
+  background-color: #065a91;
+}
+
+/* Thiết kế bảng tổng thể */
+.manage_table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Tiêu đề bảng */
+.manage_thead {
+  background-color: rgb(9, 120, 189);
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* Ô tiêu đề */
+.manage_table_interface {
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+/* Ô dữ liệu */
+.manage_table_db {
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+/* Xen kẽ màu hàng */
+.manage_tbody .manage_table_row:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.manage_tbody .manage_table_row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Hover effect */
+.manage_tbody .manage_table_row:hover {
+  background-color: #e0f3ff;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .manage_dong1 {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .manage_dong2 {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .manage_dong2 input,
+  .manage_dong2 select,
+  .manage_dong2 button {
+    width: 90%;
+  }
+
+  .manage_table_interface {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .manage_table_db {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .manage_table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .manage_dong2 input,
+  .manage_dong2 select,
+  .manage_dong2 button {
+    width: 100%;
+  }
+
+  .manage_table_interface {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .manage_table_db {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .manage_dong1 {
+    flex-direction: column;
+  }
+
+  .manage_heading_content,
+  .manage_heading_logout {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  .manage_dong2 input,
+  .manage_dong2 select,
+  .manage_dong2 button {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .manage_table {
+    font-size: 10px;
+  }
+
+  .manage_table_interface,
+  .manage_table_db {
+    font-size: 10px;
+    padding: 5px;
+  }
+}
 
 /* ========================================================================================================================================= */
 /* 

@@ -14,7 +14,9 @@
 </head>
 <body class="home-body">
   <!-- Header section -->
-  <?php require_once("header.inc"); ?>
+        <?php 
+          include 'include\header.inc'; 
+        ?>
 
   <main class="home-main">
     <section class="hero">
@@ -272,6 +274,8 @@
   </main>
 
   <!-- Footer section -->
-  <?php require_once("footer.inc"); ?>
+      <?php 
+        include 'include\footer.inc'; 
+      ?>
 </body>
 </html>

@@ -20,7 +20,9 @@
   </head>
   <body class="job-description">
     <!-- Header section -->
-    <?php require_once("header.inc"); ?>
+    <?php 
+        include 'include\header.inc'; 
+    ?>
 
     <!-- Job list section -->
     <div id="job_list">
@@ -618,6 +620,8 @@
     <a id="top" class="scroll" href="#">↑</a>
 
     <!-- Footer section -->
-    <?php require_once("footer.inc"); ?>
+    <?php 
+      include 'include\footer.inc'; 
+    ?>
   </body>
 </html>

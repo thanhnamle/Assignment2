@@ -15,7 +15,9 @@
 </head>
 <body class ="body_about">
     <!-- Header section -->
-    <?php require_once("header.inc"); ?>
+    <?php 
+        include 'include\header.inc'; 
+    ?>
 
     <!-- About section -->
     <div class="about_page">
@@ -60,32 +62,34 @@
             
 
             <div  class="about_item">
-                <a href="ourteam.html">
+                <a href="ourteam.php">
                     <img src="styles/images/logo-team.jpg" alt=""  class ="about_image">
                 </a>
-                <a href="ourteam.html"  class = "about_heading">TEAM PROFILE</a>
+                <a href="ourteam.php"  class = "about_heading">TEAM PROFILE</a>
                 <p class ="about_description">Details about our members</p>
             </div>
 
             <div class="about_item">
-                <a href="achievement.html">
+                <a href="achievement.php">
                     <img src="styles/images/logo-achievement3.png" alt="" class ="about_image">
                 </a>
-                <a href="achievement.html" class = "about_heading">ACHIEVEMENTS</a>
+                <a href="achievement.php" class = "about_heading">ACHIEVEMENTS</a>
                 <p class ="about_description">Details about our achievements</p>
             </div>
 
             <div class="about_item">
-                <a href="jobs.html">
+                <a href="jobs.php">
                     <img src="styles/images/logo-hiring1.png" alt="" class ="about_image">
                 </a>
-                <a href="jobs.html" class = "about_heading">GET A JOB</a>
+                <a href="jobs.php" class = "about_heading">GET A JOB</a>
                 <p class ="about_description">Details about jobs</p>
             </div>
         </div>
     </div>
 
     <!-- Footer section -->
-    <?php require_once("footer.inc"); ?>
+    <?php 
+        include 'include\footer.inc'; 
+    ?>
 </body>
 </html>
