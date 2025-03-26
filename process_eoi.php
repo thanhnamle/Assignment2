@@ -122,9 +122,6 @@
 
         if (isset($_POST["other_skills"])) {
             $other_skills = sanitise_input($_POST["other_skills"]);
-            if (!preg_match("/^[a-zA-Z0-9\s]+$/", $OtherSkills)) {
-                $errMsg .= "<p>Only alphanumeric characters and spaces are allowed in the Other Skills field.</p>";
-            }
         } else {
             $OtherSkills = "";
         }
@@ -133,9 +130,7 @@
 
         // Makes sure all the required fields are filled; otherwise, display error message
         if (empty($job_reference)) {
-            $errMsg .= "<p>You must enter a job reference number.</p>";
-        } elseif (!preg_match("/^[a-zA-Z0-9]{5}$/", $job_reference)) {
-            $errMsg .= "<p>Only five alphanumeric characters are allowed in the job reference number.</p>";
+            $errMsg .= "<p>You must select Job Reference.</p>";
         }
         if (empty($first_name)) {
             $errMsg .= "<p>You must enter your first name.</p>";

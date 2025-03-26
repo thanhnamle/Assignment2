@@ -95,14 +95,23 @@ $result = mysqli_query($conn, $sql);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Monomakh&family=Oswald:wght@200..700&family=Russo+One&family=Sigmar&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/style.css">
 <title>Document</title>
 </head>
 <body class="manage_container">
 <fieldset class="manage_dong1">
-        <a class="manage_heading_content" href="index.php">Home</a>
-        <p class="manage_heading_content">Manager Page</p>
-        <a class="manage_heading_logout" href="manage_logout.php">Log out</a>
+    <nav class="manage_nav">
+        <ul class="manage_heading_nav1">
+        <li ><a href="index.php">Home</a></li>
+        <li ><a href="#">Manager Page</a></li>
+        <li ><a href="apply.php">Add Users</a></li>
+        <li ><a href="manage_logout.php">Log out</a></li>
+        </ul>
+    </nav>
 </fieldset>
 
 <fieldset class="manage_dong2">
@@ -144,7 +153,8 @@ $result = mysqli_query($conn, $sql);
 </fieldset>
 
 <!-- HTML TABLE -->
-<table border="1" class="manage_table">
+<fieldset class="manage_table">
+<table border="1">
     <thead class="manage_thead">
         <tr class="manage_table_row">
             <th class="manage_table_interface">EOI NUMBER</th>
@@ -186,6 +196,8 @@ $result = mysqli_query($conn, $sql);
         <?php } ?>
     </tbody>
 </table>
+</fieldset>
+
 </body>
 </html>
 

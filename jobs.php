@@ -17,14 +17,14 @@
 </head>
 <body class="job-description">
      <!-- Header section -->
-     <?php include("header.inc"); ?>
+     <?php include("include/header.inc"); ?>
     <!-- Jobs description section -->
     <?php
     
     require_once("settings.php"); // Gọi file kết nối
     
     // Kiểm tra kết nối
-    if (!$dbconn) {
+    if (!$conn) {
         die("<p>Unable to connect to the database.</p>");
     }
     
@@ -32,7 +32,7 @@
     $query = "SELECT * FROM jobs";
     
     // Thực thi truy vấn
-    $result = mysqli_query($dbconn, $query);
+    $result = mysqli_query($conn, $query);
     
     // test the connection
     if ($result) {
@@ -121,7 +121,7 @@
         }
         
         // Đóng kết nối CSDL
-        mysqli_close($dbconn);
+        mysqli_close($conn);
             }
      
    
@@ -130,6 +130,6 @@
     ?>
     
         <!-- Footer section -->
-        <?php include("footer.inc"); ?>
+        <?php include("include/footer.inc"); ?>
 </body>
 </html>

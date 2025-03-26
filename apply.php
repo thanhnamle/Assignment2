@@ -32,7 +32,14 @@
                         <legend class="form-infor">Personal Details</legend>
                         <p>
                             <label class = "form-font" for="jobnumber">Job Reference Number</label> <br>
-                            <input class="apply_input" type="text" name="jobnumber" id="jobnumber" pattern="[A-Za-z0-9]{5}"  required = "required">
+                            <select class="apply_select" name="jobnumber" id="jobnumber" required>
+                                <option class= "state_choice" value="" disabled hidden selected>Please select a choice</option>
+                                <option class= "state_choice" value="FE001">FE001 - Front-End Developer</option>
+                                <option class= "state_choice" value="BE002">BE002 - Back-End Developer</option>
+                                <option class= "state_choice" value="DE003">DE003 - Data Engineer</option>
+                                <option class= "state_choice" value="QE004">QE004 - Quality Control Engineer</option>
+                                <option class= "state_choice" value="AE005">AE005 - Automation Engineer</option>
+                            </select>
                         </p>
                         <p>
                             <label class = "form-font" for="firstname">First Name</label> <br>
