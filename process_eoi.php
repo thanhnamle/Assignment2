@@ -123,7 +123,7 @@
         if (isset($_POST["other_skills"])) {
             $other_skills = sanitise_input($_POST["other_skills"]);
         } else {
-            $OtherSkills = "";
+            $other_skills = "";
         }
 
 
@@ -175,17 +175,16 @@
         } elseif (!preg_match("/^[a-zA-Z]{1,40}$/", $street_address)) {
             $errMsg .= "<p>Only 40 alphabetic letters are allowed in your street address.</p>";
         }
+
         if (empty($suburb)) {
             $errMsg .= "<p>You must enter your suburb or town.</p>";
         } elseif (!preg_match("/^[a-zA-Z]{1,40}$/", $suburb)) {
             $errMsg .= "<p>Only 40 alphabetic letters are allowed in your suburb or town.</p>";
         }
 
-
         if (empty($state)) {
             $errMsg .= "<p>You must select a state.</p>";
         }
-
 
         if (empty($postcode)) {
             $errMsg .= "<p>You must enter your postcode.</p>";
@@ -206,6 +205,7 @@
         "2600" => "ACT",
         
         );
+        
         // Check if the entered postcode matches the selected state
         if (isset($State) && isset($postcode)) {
         $postcode = sanitise_input($postcode);
@@ -216,13 +216,13 @@
         } elseif ($postcodeState[$postcode] !== $state) {
             $errMsg .= "<p>The selected state does not match the entered postcode.</p>";
         }
-        }
+        
+    }
         if (empty($email_address)) {
             $errMsg .= "<p>You must enter your email address.</p>";
         } elseif (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
             $errMsg .= "<p>You must enter a valid email address.</p>";
         }
-
 
         if (empty($phone)) {
             $errMsg .= "<p>You must enter your phone number.</p>";
@@ -247,7 +247,7 @@
             `email` VARCHAR(50),
             `phone` VARCHAR(20),
             `skills` VARCHAR(255),
-            `other_skills` TEXT,
+            `other_skills` VARCHAR(255),
             Status ENUM('New', 'Current', 'Final') DEFAULT 'New'
 
         )";
@@ -283,7 +283,6 @@
             '$phone',
             '$skills',
             '$other_skills'
-            
             
             )";
 

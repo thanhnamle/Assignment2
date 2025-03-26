@@ -12,6 +12,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <title>Apply Jobs</title>
+    <script>
+        // Mapping of states to their representative postcodes
+        const statePostcodeMap = {
+            'VIC': '3000',
+            'NSW': '2000',
+            'QLD': '4000',
+            'NT': '0800',
+            'WA': '6000',
+            'SA': '5000',
+            'TAS': '7000',
+            'ACT': '2600'
+        };
+
+        // Function to automatically fill postcode when state is selected
+        function autofillPostcode() {
+            // Get the selected state
+            const stateSelect = document.getElementById('state');
+            const postcodeInput = document.getElementById('postcode');
+
+            // When a state is selected, automatically fill the postcode
+            stateSelect.addEventListener('change', function() {
+                // Get the selected state value
+                const selectedState = this.value;
+
+                // Find the corresponding postcode
+                const automaticPostcode = statePostcodeMap[selectedState];
+
+                // Set the postcode input value
+                if (postcodeInput && automaticPostcode) {
+                    postcodeInput.value = automaticPostcode;
+                }
+            });
+        }
+
+        // Run the autofill function when the page loads
+        window.addEventListener('load', autofillPostcode);
+    </script>
 </head>
 <body id="apply-background">
         <!-- Header section -->
