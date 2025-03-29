@@ -17,12 +17,17 @@
 </head>
 <body class="job-description">
      <!-- Header section -->
-     <?php include("include/header.inc"); ?>
+     <?php include("./include/header.inc"); ?>
     <!-- Jobs description section -->
     <?php
     
     require_once("settings.php"); // Gọi file kết nối
-    
+    $conn = @mysqli_connect(
+        $host,
+        $user,
+        $pwd,
+        $sql_db
+    );
     // Kiểm tra kết nối
     if (!$conn) {
         die("<p>Unable to connect to the database.</p>");
@@ -130,6 +135,6 @@
     ?>
     
         <!-- Footer section -->
-        <?php include("include/footer.inc"); ?>
+        <?php include("./include/footer.inc"); ?>
 </body>
 </html>

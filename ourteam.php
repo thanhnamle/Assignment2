@@ -14,7 +14,7 @@
 <body class ="body_about">
     <!-- Header section -->
     <?php 
-        include 'include\header.inc'; 
+        include './include/header.inc'; 
     ?>
 
     <!-- Group information -->
@@ -152,7 +152,7 @@
 
     <!-- Footer section -->
     <?php 
-        include 'include\footer.inc'; 
+        include './include/footer.inc'; 
     ?>
 </body>
 </html>

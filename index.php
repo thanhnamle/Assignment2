@@ -15,7 +15,7 @@
 <body class="home-body">
   <!-- Header section -->
         <?php 
-          include 'include\header.inc'; 
+          include './include/header.inc'; 
         ?>
 
   <main class="home-main">
@@ -275,7 +275,7 @@
 
   <!-- Footer section -->
       <?php 
-        include 'include\footer.inc'; 
+        include './include/footer.inc'; 
       ?>
 </body>
 </html>

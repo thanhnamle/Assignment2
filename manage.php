@@ -16,9 +16,9 @@ function sanitizeInput($input) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["manage_search_button"])) {
         // Search query based on user input
-        $jobReference = sanitizeInput($_POST["manage_job_reference_number"] ?? "");
-        $firstName = sanitizeInput($_POST["manage_first_name"] ?? "");
-        $lastName = sanitizeInput($_POST["manage_last_name"] ?? "");
+        $jobReference = sanitizeInput(isset($_POST["manage_job_reference_number"]) ? $_POST["manage_job_reference_number"] : "");
+        $firstName = sanitizeInput(isset($_POST["manage_first_name"]) ? $_POST["manage_first_name"] : "");
+        $lastName = sanitizeInput(isset($_POST["manage_last_name"]) ? $_POST["manage_last_name"] : "");
 
         $sql = "SELECT * FROM Process_EOI WHERE 1";
         if (!empty($jobReference)) {
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_query($conn, $sql)) {
                 echo "EOIs with job reference '$jobReference' deleted successfully.";
                 mysqli_query($conn, "ALTER TABLE Process_EOI AUTO_INCREMENT = 1");
-                echo "<a href='manager_page\manage.php'>Back to Manage Page</a>";
+                echo "<a href='manage.php'>Back to Manage Page</a>";
             } else {
                 echo "Error: " . mysqli_error($conn);
             }
@@ -65,8 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT * FROM Process_EOI";
     
         if (isset($_POST["filter_button"])) {
-            $filterColumn = $_POST["filter_column"] ?? "EOInumber";
-            $filterOrder = $_POST["filter_order"] ?? "ASC";
+            $filterColumn = isset($_POST["filter_column"]) ? $_POST["filter_column"] : "EOInumber";
+            $filterOrder = isset($_POST["filter_order"]) ? $_POST["filter_order"] : "ASC";
     
             // Chỉ cho phép sắp xếp theo các cột hợp lệ để tránh SQL Injection
             $allowedColumns = ["EOInumber", "status"];

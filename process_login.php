@@ -2,7 +2,11 @@
     session_start();
 
     include ("settings.php");
-    
+    $conn = new mysqli($host, $user, $pwd, $sql_db);
+
+    if (!$conn) {
+        echo "<p>Database connection failed</p>";
+    }
 
     $name = sanitizeInput($_POST["name"]);
     $pwd  = sanitizeInput($_POST["pwd"]);

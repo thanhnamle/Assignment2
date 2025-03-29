@@ -1,6 +1,17 @@
 <?php
 // Include database connection
 include "settings.php";
+// Không cần tạo kết nối lại vì đã có từ settings.php
+$conn = @mysqli_connect(
+    $host,
+    $user,
+    $pwd,
+    $sql_db
+);
+// Kiểm tra kết nối
+if (!$conn) {
+    die("<p>Unable to connect to the database.</p>");
+}
 
 $alter = "ALTER TABLE Process_EOI ADD UNIQUE(job_reference, first_name, last_name)";
 mysqli_query($conn, $alter);
@@ -35,6 +46,7 @@ if (isset($_POST['apply_submit'])) {
         echo "<script>
             window.onload = function() {
                 alert('User already applied for this job!');
+                window.location.href = 'apply.php';
             }
         </script>";
     } else {
@@ -61,10 +73,6 @@ if (isset($_POST['apply_submit'])) {
     mysqli_close($conn);
 }
 ?>
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -122,7 +130,7 @@ if (isset($_POST['apply_submit'])) {
 <body id="apply-background">
         <!-- Header section -->
         <?php 
-            include 'include\header.inc'; 
+            include './include/header.inc'; 
         ?>
 
         <!-- Form section -->
@@ -157,7 +165,7 @@ if (isset($_POST['apply_submit'])) {
                         </p>
                         <p>
                             <label class = "form-font" for="dateofbirth">Date of Birth
-                            <input class="apply_input" type="date" name="bday" id="dateofbirth" required = "required">
+                            <input class="apply_input" pattern="\d{1,2}/\d{1,2}/\d{4}" type="date" name="bday" id="dateofbirth" required = "required">
                             </label>
                         </p>
                         
@@ -274,6 +282,6 @@ if (isset($_POST['apply_submit'])) {
 
         <!-- Footer section -->
         <?php 
-            include 'include\footer.inc'; 
+            include './include/footer.inc'; 
         ?>
 </html>

@@ -14,7 +14,7 @@
 <body class="enhancements-body">
     <!-- Header section -->
     <?php 
-        include 'include\header.inc'; 
+        include './include/header.inc'; 
     ?>
 
     <!-- Enhancements section -->
@@ -69,7 +69,7 @@
     </main>
     <!-- Footer section -->
     <?php 
-            include 'include\footer.inc'; 
+            include './include/footer.inc'; 
     ?>
 </body>
 </html>

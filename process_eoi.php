@@ -26,7 +26,10 @@
             $pwd,
             $sql_db
         );
-
+        // Check connection
+        if (!$conn) {
+            die("<p>Unable to connect to the database.</p>");
+        }
 
         // Validate and sanitize form inputs
 
@@ -145,7 +148,7 @@
         if (empty($dob)) {
             $errMsg .= "<p>You must enter your date of birth.</p>";
         } else {
-            $dobDateTime = DateTime::createFromFormat('dd/MM/yyyy', $dob);
+            $dobDateTime = new DateTime($dob);
             if (!$dobDateTime) {
                 $errMsg .= "<p>You must enter the date of birth in the correct format: DD-MM-YYYY.</p>";
             } else {
@@ -164,7 +167,6 @@
             //This ensures Radio input has a value, you can proceed with further processing
             $selectedGender = $_POST['gender'];
         }
-
 
         if (empty($street_address)) {
             $errMsg .= "<p>You must enter your street address.</p>";
@@ -214,19 +216,17 @@
         }
         
     }
-        if (empty($email_address)) {
+        if (empty($email)) {
             $errMsg .= "<p>You must enter your email address.</p>";
-        } elseif (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errMsg .= "<p>You must enter a valid email address.</p>";
         }
 
         if (empty($phone)) {
             $errMsg .= "<p>You must enter your phone number.</p>";
-        } elseif (!preg_match("/^(\+?\d{1,4}[\s-]?)?(?!0+\s+,?$)\d{10}\s*,?$/", $phone)) {
-            $errMsg .= "<p>You must enter a valid phone number (10 digits, no spaces or special characters).</p>";
+        } elseif (!preg_match("/^\d{8,12}$/", $phone)) {
+            $errMsg .= "<p>You must enter a valid phone number (8-12 digits).</p>";
         }
-
-
 
         // Create the EOI table if it doesn't exist
         $createTableQuery = "CREATE TABLE IF NOT EXISTS Process_EOI (
@@ -281,52 +281,31 @@
             '$other_skills'
             
             )";
+            // Check if the user already exists before trying to insert
+            $checkUserQuery = "SELECT * FROM Process_EOI WHERE job_reference = '$job_reference' AND LOWER(first_name) = LOWER('$first_name') AND LOWER(last_name) = LOWER('$last_name')";
+            $result = mysqli_query($conn, $checkUserQuery);
 
-
-
-
-
-// Include database connection
-if (isset($_POST['apply_submit'])) {
-    // Kiểm tra lỗi trước khi thực hiện các thao tác với CSDL
-    if (empty($errMsg)) {
-        // Kiểm tra xem ứng viên đã đăng ký cho công việc này chưa
-        $checkUserQuery = "SELECT * FROM Process_EOI WHERE job_reference = '$job_reference' AND LOWER(first_name) = LOWER('$first_name') AND LOWER(last_name) = LOWER('$last_name')";
-        $result = mysqli_query($conn, $checkUserQuery);
-        $count = mysqli_num_rows($result);
-
-        if ($count > 0) {
-            // Nếu đã tồn tại, hiển thị thông báo
-            echo "<script>
-                window.onload = function() {
+            if (mysqli_num_rows($result) > 0) {
+                // User already exists, show alert and redirect
+                echo "<script>
                     alert('User already applied for this job!');
-                }
-            </script>";
-        } else {
-            // Thực hiện chèn dữ liệu nếu chưa tồn tại
-            if (mysqli_query($conn, $insertQuery)) {
-                echo "<script>
-                    window.onload = function() {
-                        alert('Application submitted successfully!');
-                    }
+                    window.location.href = 'apply.php';
                 </script>";
+                exit; // Important: stop execution here
             } else {
-                echo "<script>
-                    window.onload = function() {
+                // Continue with insertion if no duplicates found
+                if (mysqli_query($conn, $insertQuery)) {
+                    echo "<script>
+                        alert('Application submitted successfully!');
+                        window.location.href = 'apply.php';
+                    </script>";
+                } else {
+                    echo "<script>
                         alert('Error: " . mysqli_error($conn) . "');
-                    }
-                </script>";
+                        window.location.href = 'apply.php';
+                    </script>";
+                }
             }
-        }
-    } else {
-        // Nếu có lỗi, hiển thị các lỗi
-        echo "<div class='error'>$errMsg</div>";
-    }
-}
-
-// Đóng kết nối CSDL ở cuối script
-mysqli_close($conn);
-
     ?>
 </body>
 </html>
