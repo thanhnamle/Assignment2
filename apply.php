@@ -1,17 +1,6 @@
 <?php
 // Include database connection
-include "settings.php";
-// Không cần tạo kết nối lại vì đã có từ settings.php
-$conn = @mysqli_connect(
-    $host,
-    $user,
-    $pwd,
-    $sql_db
-);
-// Kiểm tra kết nối
-if (!$conn) {
-    die("<p>Unable to connect to the database.</p>");
-}
+include "./settings.php";
 
 $alter = "ALTER TABLE Process_EOI ADD UNIQUE(job_reference, first_name, last_name)";
 mysqli_query($conn, $alter);

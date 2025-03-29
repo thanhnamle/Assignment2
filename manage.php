@@ -1,12 +1,6 @@
 <?php
 require_once("settings.php");
 
-// Connect to the database
-$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-if (!$conn) {
-    echo "<p>Database connection failure</p>";
-}
-
 // Function to sanitize input data
 function sanitizeInput($input) {
     return htmlspecialchars(trim(stripslashes($input)));
