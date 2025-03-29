@@ -42,7 +42,7 @@
               <h3>Front-end Developer</h3>
               <p>👨‍🎨 Front-End Developer: "Bringing designs to life with seamless, interactive experiences." </p>
               <div class="apply-button">
-                <a href="jobs.html">Apply</a>
+                <a href="jobs.php">Apply</a>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
               <h3>Back-end Developer</h3>
               <p>👨‍💻 Back-End Developer: "Powering the web with robust, scalable, and secure systems." </p>
               <div class="apply-button">
-                <a href="jobs.html">Apply</a>
+                <a href="jobs.php">Apply</a>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@
               <h3>Data Engineer</h3>
               <p>📊 Data Engineer: "Transforming raw data into actionable insights with precision." </p>
               <div class="apply-button">
-                <a href="jobs.html">Apply</a>
+                <a href="jobs.php">Apply</a>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
               <h3>Quality Control Engineer</h3>
               <p>🔍 Quality Control Engineer: "Ensuring flawless performance through meticulous testing." </p>
               <div class="apply-button">
-                <a href="jobs.html">Apply</a>
+                <a href="jobs.php">Apply</a>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@
               <h3>Automation Engineer</h3>
               <p>🤖 Automation Engineer: "Optimizing workflows by turning manual tasks into automation." </p>
               <div class="apply-button">
-                <a href="jobs.html">Apply</a>
+                <a href="jobs.php">Apply</a>
               </div>
             </div>
           </div>
@@ -124,7 +124,7 @@
               <li>✔ Control when, where, and how you work</li>
               <li>✔ Explore different ways to earn</li>
             </ul>
-            <a href="jobs.html" class="about-us-button-2">Find opportunities</a>
+            <a href="jobs.php" class="about-us-button-2">Find opportunities</a>
         </div>
       </div>
     </div>

@@ -25,24 +25,24 @@
         <div class="scroll-list_wrp">
             <section class="enhancements-section">
                 <h2>Enhancement 1: Fade-in Effect on Scroll</h2>
-                <p>We have added a fade-in effect to elements on the <a href="about.html">about.html</a> page to create a smooth scrolling experience.</p>
+                <p>We have added a fade-in effect to elements on the <a href="about.php">about.html</a> page to create a smooth scrolling experience.</p>
             </section>
     
             <section class="enhancements-section">
                 <h2>Enhancement 2: CSS pseudo-element </h2>
-                <p>The ::before pseudo-element in .hero-btn of <a href="index.html">index.html</a> creates a dynamic background effect that enhances interactivity. When hovered, it smoothly expands, giving the button a modern and engaging visual transition.</p>
+                <p>The ::before pseudo-element in .hero-btn of <a href="index.php">index.html</a> creates a dynamic background effect that enhances interactivity. When hovered, it smoothly expands, giving the button a modern and engaging visual transition.</p>
             </section>
     
             <section class="enhancements-section">
                 <h2>Enhancement 3: Responsive of Header and Footer </h2>
-                <p> On the <a href="home.html">home.html <br></a>
+                <p> On the <a href="index.php">index.html <br></a>
                     When the screen width drops below 865px, the traditional navigation bar is replaced with a hamburger menu, optimizing space and improving responsiveness. <br>
                     When the screen width decreases to 1024px, the footer layout shifts to a column format, ensuring all information remains visible and well-organized.</p>
             </section>
     
             <section class="enhancements-section">
                 <h2>Enhancement 4: Local link</h2>
-                <p>This HTML snippet creates a button-like link labeled "Explore Now" <a href="index.html">index.html</a> styled with the hero-btn class. It directs users to the #featured-jobs section, improving navigation and enhancing the call-to-action for job exploration.</p>
+                <p>This HTML snippet creates a button-like link labeled "Explore Now" <a href="index.php">index.html</a> styled with the hero-btn class. It directs users to the #featured-jobs section, improving navigation and enhancing the call-to-action for job exploration.</p>
             </section>
 
             <section class="enhancements-section">

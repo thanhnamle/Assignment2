@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_query($conn, $sql)) {
                 echo "EOIs with job reference '$jobReference' deleted successfully.";
                 mysqli_query($conn, "ALTER TABLE Process_EOI AUTO_INCREMENT = 1");
-                echo "<a href='manage.php'>Back to Manage Page</a>";
+                echo "<a href='manager_page\manage.php'>Back to Manage Page</a>";
             } else {
                 echo "Error: " . mysqli_error($conn);
             }
@@ -91,7 +91,7 @@ $result = mysqli_query($conn, $sql);
 
 <!-- HTML FORM -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="manage_page_html">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,18 +101,100 @@ $result = mysqli_query($conn, $sql);
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Monomakh&family=Oswald:wght@200..700&family=Russo+One&family=Sigmar&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/style.css">
 <title>Document</title>
+
+<script>
+    class StickyNavigation {
+	
+	constructor() {
+		this.currentId = null;
+		this.currentTab = null;
+		this.tabContainerHeight = 70;
+		let self = this;
+		$('.manage_hero_tab').click(function() { 
+			self.onTabClick(event, $(this)); 
+		});
+		$(window).scroll(() => { this.onScroll(); });
+		$(window).resize(() => { this.onResize(); });
+	}
+	
+	onTabClick(event, element) {
+		event.preventDefault();
+		let scrollTop = $(element.attr('href')).offset().top - this.tabContainerHeight + 1;
+		$('manage_page_html, manage_container').animate({ scrollTop: scrollTop }, 600);
+	}
+	
+	onScroll() {
+		this.checkTabContainerPosition();
+        this.findCurrentTabSelector();
+	}
+	
+	onResize() {
+		if(this.currentId) {
+			this.setSliderCss();
+		}
+	}
+	
+	checkTabContainerPosition() {
+		let offset = $('.manage_dong1').offset().top + $('.manage_dong1').height() - this.tabContainerHeight;
+		if($(window).scrollTop() > offset) {
+			$('.manage_nav').addClass('manage_nav--top');
+		} 
+		else {
+			$('.manage_nav').removeClass('manage_nav--top');
+		}
+	}
+	
+	findCurrentTabSelector(element) {
+		let newCurrentId;
+		let newCurrentTab;
+		let self = this;
+		$('.manage_hero_tab').each(function() {
+			let id = $(this).attr('href');
+			let offsetTop = $(id).offset().top - self.tabContainerHeight;
+			let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
+			if($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+				newCurrentId = id;
+				newCurrentTab = $(this);
+			}
+		});
+		if(this.currentId != newCurrentId || this.currentId === null) {
+			this.currentId = newCurrentId;
+			this.currentTab = newCurrentTab;
+			this.setSliderCss();
+		}
+	}
+	
+	setSliderCss() {
+		let width = 0;
+		let left = 0;
+		if(this.currentTab) {
+			width = this.currentTab.css('width');
+			left = this.currentTab.offset().left;
+		}
+		$('.manage_hero_tab_slider').css('width', width);
+		$('.manage_hero_tab_slider').css('left', left);
+	}
+	
+}
+
+new StickyNavigation();
+</script>
+
 </head>
 <body class="manage_container">
-<fieldset class="manage_dong1">
-    <nav class="manage_nav">
-        <ul class="manage_heading_nav1">
-        <li ><a href="index.php">Home</a></li>
-        <li ><a href="#">Manager Page</a></li>
-        <li ><a href="apply.php">Add Users</a></li>
-        <li ><a href="manage_logout.php">Log out</a></li>
-        </ul>
+<header class="manage_dong1">
+    <nav class="manage_nav manage_nav--top">
+        <div class="manage_navdiv">
+            <h1 class="manage_logo">Manager Page</h1>
+            <ul class="manage_heading_nav1">
+                <li ><a class="manage_hero_tab" href="index.php">Home</a></li>
+                <li ><a class="manage_hero_tab" href="apply.php">Add Users</a></li>
+                <li ><a id="logout_managepage" class="manage_hero_tab" href="manage_logout.php">Log out</a></li>
+                <span class="manage_hero_tab_slider"></span>
+            </ul>
+        </div>
     </nav>
-</fieldset>
+</header>
 
 <fieldset class="manage_dong2">
     <form method="post">
@@ -153,8 +235,8 @@ $result = mysqli_query($conn, $sql);
 </fieldset>
 
 <!-- HTML TABLE -->
-<fieldset class="manage_table">
-<table border="1">
+<fieldset class="table_container">
+<table border = 0 class="manage_table">
     <thead class="manage_thead">
         <tr class="manage_table_row">
             <th class="manage_table_interface">EOI NUMBER</th>

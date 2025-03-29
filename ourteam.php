@@ -98,7 +98,7 @@
             <!--Timetable-->
             <h1 class="about_header_group">Our timetable</h1>
             <div class="schedule">
-                <table>
+                <table class="about_table">
                     <thead>
                         <tr class = "about_tr">
                             <th class="about_th">Day/Time</th>

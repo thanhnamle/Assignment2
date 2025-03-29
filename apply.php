@@ -1,3 +1,72 @@
+<?php
+// Include database connection
+include "settings.php";
+
+$alter = "ALTER TABLE Process_EOI ADD UNIQUE(job_reference, first_name, last_name)";
+mysqli_query($conn, $alter);
+
+if (isset($_POST['apply_submit'])) {
+    // Get form data and sanitize input
+    $job_reference = mysqli_real_escape_string($conn, $_POST['jobnumber']);
+    $first_name = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $last_name = mysqli_real_escape_string($conn, $_POST['lastName']);
+    $dob  = mysqli_real_escape_string($conn, $_POST['bday']);
+    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+    $street_address = mysqli_real_escape_string($conn, $_POST['street']);
+    $suburb = mysqli_real_escape_string($conn, $_POST['suburb']);
+    $state = mysqli_real_escape_string($conn, $_POST['state']);
+    $postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    
+    // Handle skills as a comma-separated string
+    $skills = isset($_POST['tech']) ? implode(", ", $_POST['tech']) : "";
+    $other_skills = mysqli_real_escape_string($conn, $_POST['comments']);
+    $status = "New"; // Default status for new applications
+
+    // Check if the user already exists
+    $checkUserQuery = "SELECT * FROM Process_EOI WHERE job_reference = '$job_reference' AND LOWER(first_name) = LOWER('$first_name') AND LOWER(last_name) = LOWER('$last_name')";
+
+    $result = mysqli_query($conn, $checkUserQuery);
+    $count = mysqli_num_rows($result);
+
+    if ($count > 0) {
+        // Thay đổi cách hiển thị thông báo
+        echo "<script>
+            window.onload = function() {
+                alert('User already applied for this job!');
+            }
+        </script>";
+    } else {
+        // Insert new application
+        $sql = "INSERT INTO Process_EOI (job_reference, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone, skills, other_skills, status) 
+                VALUES ('$job_reference', '$first_name', '$last_name', '$dob', '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email', '$phone', '$skills', '$other_skills', '$status')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "<script>
+                window.onload = function() {
+                    alert('Application submitted successfully!');
+                }
+            </script>";
+        } else {
+            echo "<script>
+                window.onload = function() {
+                    alert('Error: " . mysqli_error($conn) . "');
+                }
+            </script>";
+        }
+    }
+
+    // Close the database connection AFTER all queries
+    mysqli_close($conn);
+}
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -197,7 +266,7 @@
                 
     
                 <div class="apply_button">
-                    <input id="apply_submit" type="submit" value="Apply">
+                    <input id="apply_submit" type="submit" name = "apply_submit" value="Apply" onclick="return mess();">
                     <input type="reset" value="Reset form">
                 </div>
             </form>

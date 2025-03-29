@@ -26,10 +26,6 @@
             $pwd,
             $sql_db
         );
-        // Check connection; if failed, display an error message
-        if (!$conn) {
-            echo "<p>Database connection failure</p>";
-        }
 
 
         // Validate and sanitize form inputs
@@ -149,9 +145,9 @@
         if (empty($dob)) {
             $errMsg .= "<p>You must enter your date of birth.</p>";
         } else {
-            $dobDateTime = DateTime::createFromFormat('d/m/Y', $dob);
+            $dobDateTime = DateTime::createFromFormat('dd/MM/yyyy', $dob);
             if (!$dobDateTime) {
-                $errMsg .= "<p>You must enter the date of birth in the correct format: YYYY-MM-DD.</p>";
+                $errMsg .= "<p>You must enter the date of birth in the correct format: DD-MM-YYYY.</p>";
             } else {
                 $now = new DateTime();
                 $age = $now->diff($dobDateTime)->y;
@@ -289,15 +285,48 @@
 
 
 
-        $result = mysqli_query($conn, $insertQuery);	
-            if (!$result){		
-                echo "<p>Something is wrong with ", $insertQuery, "</p>";
-            } else {		
-                echo "<p\">Successfully added new Applicant record</p><br>
-                    <a href='jobs.php'>Back to Job List</a>";
 
+// Include database connection
+if (isset($_POST['apply_submit'])) {
+    // Kiểm tra lỗi trước khi thực hiện các thao tác với CSDL
+    if (empty($errMsg)) {
+        // Kiểm tra xem ứng viên đã đăng ký cho công việc này chưa
+        $checkUserQuery = "SELECT * FROM Process_EOI WHERE job_reference = '$job_reference' AND LOWER(first_name) = LOWER('$first_name') AND LOWER(last_name) = LOWER('$last_name')";
+        $result = mysqli_query($conn, $checkUserQuery);
+        $count = mysqli_num_rows($result);
+
+        if ($count > 0) {
+            // Nếu đã tồn tại, hiển thị thông báo
+            echo "<script>
+                window.onload = function() {
+                    alert('User already applied for this job!');
+                }
+            </script>";
+        } else {
+            // Thực hiện chèn dữ liệu nếu chưa tồn tại
+            if (mysqli_query($conn, $insertQuery)) {
+                echo "<script>
+                    window.onload = function() {
+                        alert('Application submitted successfully!');
+                    }
+                </script>";
+            } else {
+                echo "<script>
+                    window.onload = function() {
+                        alert('Error: " . mysqli_error($conn) . "');
+                    }
+                </script>";
             }
-            mysqli_close($conn);
+        }
+    } else {
+        // Nếu có lỗi, hiển thị các lỗi
+        echo "<div class='error'>$errMsg</div>";
+    }
+}
+
+// Đóng kết nối CSDL ở cuối script
+mysqli_close($conn);
+
     ?>
 </body>
 </html>

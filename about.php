@@ -63,7 +63,7 @@
 
             <div  class="about_item">
                 <a href="ourteam.php">
-                    <img src="styles/images/logo-team.jpg" alt=""  class ="about_image">
+                    <img src="styles/images/logo-team.jpg" alt="" class ="about_image">
                 </a>
                 <a href="ourteam.php"  class = "about_heading">TEAM PROFILE</a>
                 <p class ="about_description">Details about our members</p>

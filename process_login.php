@@ -2,21 +2,7 @@
     session_start();
 
     include ("settings.php");
-    $conn = @mysqli_connect($host,$user, $pwd, $sql_db);
-    $table = "managers";
-    if (!$conn) {
-        echo "<p>Database connection failed</p>";
-    }
-    else {
-        if ((isset($_POST["name"])) and (isset($_POST["pwd"]))) {
-            function sanitizeInput($input) {
-                $input = trim($input);
-                $input = stripslashes($input);
-                $input = htmlspecialchars($input);
-                return $input;
-            }
-        }
-    }
+    
 
     $name = sanitizeInput($_POST["name"]);
     $pwd  = sanitizeInput($_POST["pwd"]);

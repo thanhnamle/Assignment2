@@ -11,10 +11,11 @@ html {
 }
 
 /* Header Styling */
-header {
+.header_container {
   background-color: #0d2240;
   color: #fff;
-  
+  width: 100%;
+  padding: 0 2%;
 }
 
 .logo {
@@ -24,7 +25,7 @@ header {
 
 .logo-web {
   color: #d6caca;
-  margin-left: -15rem;
+  margin-left: 1rem;
 
 }
 
@@ -35,7 +36,8 @@ header {
   gap: 20px;
   margin-right: -200px;
   font-size: 20px;
-  justify-content: flex-end;
+  justify-content: flex;
+  margin-right: -2rem ;
 }
 
 .navbar-container ul li {
@@ -53,6 +55,28 @@ header {
 
 .login-button:hover {
   background-color: #0056b3;
+}
+
+.signup-button {
+  margin-left: 0px;
+  background-color: #007bff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
+.user-profile a {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.logout-button {
+  color: #dc3545;
 }
 
 .navbar-container a {
@@ -1332,7 +1356,7 @@ transform: scale(1.05) !important; /* Slightly scale up the header */
   font-size: larger;
 }
 
-.schedule, table {
+.schedule, .about_table {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
@@ -2363,21 +2387,61 @@ description: [html files it refers to (if known)]
 }
 
 .manage_nav {
-  width: 80%;
-  margin: 0 auto;
-  padding: 10px 0;
-  box-shadow: 0px 5px 0px #dedede;
+  display: absolute;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: rgb(9, 120, 189);
+  z-index: 1000;
 }
+
+#logout_managepage {
+  border-left: white 4px solid;
+}
+
+.manage_logo {
+  font-size: 35px;
+  color: white;
+  margin: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.manage_navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.manage_heading_nav1 {
+  font-size: 20px;
+  color: white;
+  margin-left: 20px;
+  margin-top: 0;
+  margin-right: 2rem;
+}
+
+.manage_nav--top {
+  position: fixed;
+  top: 0;
+}
+
 .manage_nav ul {
   list-style: none;
   text-align: center;
   padding: 5px;
 }
-.manage_nav ul li {
+
+.manage_nav ul li{
   display: inline-block;
 }
-.manage_nav ul li a {
-  display: block;
+
+.manage_nav ul li a{
+  display: inline-block;
   padding: 15px;
   text-decoration: none;
   color: white;
@@ -2386,16 +2450,18 @@ description: [html files it refers to (if known)]
   text-transform: uppercase;
   margin: 0 10px;
 }
+
 .manage_nav ul li a,
 .manage_nav ul li a:after,
 .manage_nav ul li a:before {
   transition: all .5s;
 }
+
 .manage_nav ul li a:hover {
   color: #555;
 }
 
-nav.manage_nav ul li a {
+nav.manage_nav ul li a{
   position: relative;
 }
 
@@ -2412,7 +2478,7 @@ nav.manage_nav ul li a:after {
   height: 1px;
 }
 
-nav.manage_nav ul li a {
+nav.manage_nav ul li a{
   transition: all 2s;
 }
 
@@ -2432,6 +2498,15 @@ nav.manage_nav ul li a:hover:after {
   -webkit-animation: fill 1s forwards;
   -moz-animation: fill 1s forwards;
   opacity: 1;
+}
+
+.manage_hero_tab_slider{
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  background: #66B1F1;
+  transition: left 0.3s ease;
 }
 
 /* Keyframes */
@@ -2460,6 +2535,8 @@ nav.manage_nav ul li a:hover:after {
   border: 0;
   border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  padding-top: 90px;
+  margin-bottom: 28px;
 }
 
 .manage_dong2 input, 
@@ -2483,6 +2560,14 @@ nav.manage_nav ul li a:hover:after {
 }
 
 /* Thiết kế bảng tổng thể */
+.table_container {
+  width: 100%;
+  overflow-x: auto;
+  max-width: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
 .manage_table {
   width: 100%;
   border-collapse: collapse;
@@ -2494,25 +2579,26 @@ nav.manage_nav ul li a:hover:after {
   overflow: hidden;
   width: 100%; /* Chiếm full chiều rộng */
   overflow-x: auto;
-  border: none;
+  margin-bottom: 0;
 }
 
+/* Custom Scrollbar */
 .table-container::-webkit-scrollbar {
-  height: 8px; 
+  height: 8px;
+  width: 8px;
 }
 
 .table-container::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-  border-radius: 5px;
+  background: #f1f1f1;
 }
 
 .table-container::-webkit-scrollbar-thumb {
-  background: #3498db; 
-  border-radius: 5px;
+  background: #0978bd;
+  border-radius: 4px;
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-  background: #2980b9; 
+  background: #065a91;
 }
 
 /* Tiêu đề bảng */
@@ -2531,6 +2617,8 @@ nav.manage_nav ul li a:hover:after {
   text-align: center;
   font-weight: bold;
   border: 1px solid #ddd;
+  max-width: 0; /* This allows the column to shrink */
+  width: 1%;
 }
 
 /* Ô dữ liệu */
@@ -2564,98 +2652,52 @@ nav.manage_nav ul li a:hover:after {
   cursor: pointer;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
-  .manage_dong1 {
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .manage_nav ul {
     flex-direction: column;
-    text-align: center;
-    padding: 15px;
+    align-items: center;
   }
 
+  .manage_nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .manage_dong1,
   .manage_dong2 {
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
   }
-
-  .manage_dong2 input,
-  .manage_dong2 select,
-  .manage_dong2 button {
-    width: 90%;
-  }
-
+  
+  .manage_table_db,
   .manage_table_interface {
     font-size: 12px;
     padding: 8px;
   }
-
-  .manage_table_db {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .table-container{
-    max-height: 600px;
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap; 
-    scrollbar-width: thin; 
-    scrollbar-color: #3498db #f1f1f1; 
-    position: relative;
-  }
 }
 
-@media screen and (max-width: 768px) {
-  .manage_table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .manage_dong2 input,
-  .manage_dong2 select,
-  .manage_dong2 button {
-    width: 100%;
-  }
-
-  .manage_table_interface {
-    font-size: 12px;
-    padding: 5px;
-  }
-
-  .manage_table_db {
-    font-size: 12px;
-    padding: 5px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .manage_dong1 {
+@media (max-width: 480px) {
+  .manage_nav {
+    height: auto;
     flex-direction: column;
+    padding: 10px 0;
   }
 
-  .manage_heading_content,
-  .manage_heading_logout {
-    font-size: 18px;
-    padding: 8px;
+  .manage_nav ul {
+    flex-direction: column;
+    gap: 10px;
   }
 
   .manage_dong2 input,
   .manage_dong2 select,
   .manage_dong2 button {
-    width: 100%;
-    font-size: 12px;
-  }
-
-  .manage_table {
-    font-size: 10px;
-  }
-
-  .manage_table_interface,
-  .manage_table_db {
-    font-size: 10px;
-    padding: 4px;
+    max-width: 100%;
   }
 }
+
 
 /* ========================================================================================================================================= */
 /* 
