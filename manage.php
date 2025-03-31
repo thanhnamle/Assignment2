@@ -94,7 +94,7 @@ $result = mysqli_query($conn, $sql);
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Monomakh&family=Oswald:wght@200..700&family=Russo+One&family=Sigmar&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/style.css">
-<title>Document</title>
+<title>Manage Page</title>
 
 <script>
     class StickyNavigation {
@@ -229,8 +229,8 @@ new StickyNavigation();
 </fieldset>
 
 <!-- HTML TABLE -->
-<fieldset class="table_container">
-<table border = 0 class="manage_table">
+<div class="table_container" style="overflow-x: auto;">
+<table border = 0 class="manage_table" >
     <thead class="manage_thead">
         <tr class="manage_table_row">
             <th class="manage_table_interface">EOI NUMBER</th>
@@ -272,7 +272,7 @@ new StickyNavigation();
         <?php } ?>
     </tbody>
 </table>
-</fieldset>
+</div>
 
 </body>
 </html>

@@ -2,8 +2,8 @@
 // Include database connection
 include "./settings.php";
 
-$alter = "ALTER TABLE Process_EOI ADD UNIQUE(job_reference, first_name, last_name)";
-mysqli_query($conn, $alter);
+// $alter = "ALTER TABLE Process_EOI ADD UNIQUE(job_reference, first_name, last_name)";
+// mysqli_query($conn, $alter);
 
 if (isset($_POST['apply_submit'])) {
     // Get form data and sanitize input

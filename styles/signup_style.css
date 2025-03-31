@@ -42,13 +42,13 @@ body{
     top: 20px;
     left: 20px;
     z-index: 10;
-    color: #333;
+    color: #fff;
     font-size: 30px;
     transition: color 0.3s ease;
 }
 
 .back-btn:hover {
-    color: #ccc;
+    color: #525252;
 }
 
 form{ width: 100%; }
@@ -128,10 +128,27 @@ form{ width: 100%; }
     align-items: center;
     margin-top: 20px;
     color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    width: max-content;
+    position: relative;
+    cursor: pointer;
 }
 
-.manager_click:hover {
-    color: #ccc;
+a.manager_click::after {
+    content: "";
+    bottom: -10px;
+    height: 4px;
+    width: 100%;
+    left: 0;
+    background: #fff;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+    transform: scale(0);
+}
+
+a.manager_click:hover::after {
+    transform: scale(1);
 }
 
 .social-icons{

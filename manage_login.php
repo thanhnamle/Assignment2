@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <title>LOG IN </title>
+    <title>Log In</title>
 </head>
 <body>
     <div id = "manage_form_body">
@@ -83,7 +83,7 @@
             <input type="submit" name = "manage_login_button" class = "manage_login_button" value ="Login">
 
             <a href="index.php" class="login_back_button">Back to Home Page</a>
-            
+            <a href="user_signup.php" class="login_back_button">Back to Sigup Page</a>
         </form>
             
     </div>

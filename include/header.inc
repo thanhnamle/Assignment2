@@ -17,11 +17,11 @@
                         echo '<li class="user-profile">
                                 <a href="profile.php">' . htmlspecialchars($_SESSION['username']) . '</a>
                               </li>';
-                        echo '<li><a href="logout.php" class="logout-button">Logout</a></li>';
+                        echo '<li><a href="mainlogout.php" class="logout-button">Logout</a></li>';
                     } else {
                         // Nếu chưa đăng nhập, hiển thị nút login và signup
-                        echo '<li><a href="manage_signup.php" class="login-button">Login</a></li>';
-                        echo '<li><a href="manage_signup.php" class="signup-button">Sign Up</a></li>';
+                        echo '<li><a href="user_signup.php" class="login-button">Login</a></li>';
+                        echo '<li><a href="user_signup.php" class="signup-button">Sign Up</a></li>';
                     }
                 ?>
             </ul>
